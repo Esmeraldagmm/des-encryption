@@ -1,4 +1,6 @@
-# A Python implementation of the Data Encryption Standard (DES) algorithm. This project demonstrates how to encrypt and decrypt messages using DES, a symmetric-key block cipher. It also includes a Bash script to test the implementation and compare it with OpenSSL outputs.
+# DES Implementation
+
+A Python implementation of the Data Encryption Standard (DES) algorithm. This project demonstrates how to encrypt and decrypt messages using DES, a symmetric-key block cipher. It also includes a Bash script to test the implementation and compare it with OpenSSL outputs.
 
 ## Features
 
