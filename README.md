@@ -1,5 +1,8 @@
-# This repository contains an implementation of the Data Encryption Standard (DES) algorithm, 
-# a symmetric-key block cipher used for encrypting and decrypting data. The project includes:
+# A Python implementation of the Data Encryption Standard (DES) algorithm. This project demonstrates how to encrypt and decrypt messages using DES, a symmetric-key block cipher. It also includes a Bash script to test the implementation and compare it with OpenSSL outputs.
 
-## * A Python script (des.py) that performs DES encryption and decryption using various operations such as permutation, expansion, substitution, and key generation.
-## * A Bash script (descheck.txt) that tests the functionality of the DES implementation by encrypting and decrypting a sample message and comparing the results with the output of OpenSSL's DES encryption.
+## Features
+
+- Implements DES encryption and decryption from scratch in Python.
+- Handles key generation, initial/final permutations, expansion, S-box substitutions, P-box permutation, and XOR operations.
+- Provides a `descheck.txt` Bash script for testing the functionality of the DES implementation and compares with OpenSSL DES encryption.
+- Demonstrates encryption and decryption of messages with validation against OpenSSL results.
