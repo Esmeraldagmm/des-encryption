@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Function to encrypt plaintext 
+encrypt_des() {
+    plaintext="$1"
+    key="$2"
+    encrypted=$(python DES.py encrypt "$plaintext" "$key")
+    echo "$encrypted"
+}
+
+# Function to decrypt DES encrypted text
+decrypt_des() {
+    encrypted="$1"
+    key="$2"
+    decrypted=$(python DES.py decrypt "$encrypted" "$key")
+    echo "$decrypted"
+}
+
+# Define key and plaintext
+key="12345678"  
+plaintext="Secret Message"
+
+# Encrypt 
+encrypted=$(encrypt_des "$plaintext" "$key")
+
+# Decrypt 
+decrypted=$(decrypt_des "$encrypted" "$key")
+
+# Display results
+echo "Plaintext: $plaintext"
+echo "Encrypted text: $encrypted"
+echo "Decrypted text: $decrypted"
+
+# Encrypt plaintext using OpenSSL command
+openssl_encrypted=$(echo -n "$plaintext" | openssl enc -des-ecb -nosalt -K "$key" -nopad | xxd -p)
+
+# Decrypt encrypted text using OpenSSL command
+openssl_decrypted=$(echo "$openssl_encrypted" | xxd -r -p | openssl enc -des-ecb -d -nosalt -K "$key" -nopad)
+
+# Display results
+echo "Plaintext: $plaintext"
+echo "Encrypted text: $openssl_encrypted"
+echo "Decrypted text: $openssl_decrypted"
+
+# Compare the outputs
+if [ "$decrypted" = "$openssl_decrypted" ]; then
+    echo
+    echo "Both implementations produce the same output."
+else
+    echo
+    echo "Output does not match."
+fi
